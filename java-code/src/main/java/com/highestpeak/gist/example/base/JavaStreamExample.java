@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import lombok.Data;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2021-08-23
  * https://stackoverflow.com/questions/39594089/java-8-stream-to-mapinteger-liststring
  */

@@ -7,7 +7,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2022-09-08
  */
 public class NumAlternatePrinting {
@@ -19,7 +19,7 @@ public class NumAlternatePrinting {
             while (iter.get() < 30) {
                 lock.lock();
                 try {
-                    System.out.println("i am in."+ " ;" + Thread.currentThread().getName());
+                    System.out.println("i am in." + " ;" + Thread.currentThread().getName());
                     condition.signalAll();
                     int i = iter.incrementAndGet();
                     System.out.println("i: " + i + " ;" + Thread.currentThread().getName());

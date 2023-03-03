@@ -1,7 +1,7 @@
 package com.highestpeak.gist.example.base;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2021-10-20
  */
 public class GrayConfigSelect {

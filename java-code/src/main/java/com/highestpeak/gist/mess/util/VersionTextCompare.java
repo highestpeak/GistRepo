@@ -5,12 +5,17 @@ import java.util.StringTokenizer;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2022-09-21
  */
 public class VersionTextCompare {
+
     /**
-     * https://stackoverflow.com/questions/198431/how-do-you-compare-two-version-strings-in-java
+     * 版本号对比 https://stackoverflow.com/questions/198431/how-do-you-compare-two-version-strings-in-java <br/>
+     * eg: <br/>
+     * 1.0 < 1.1 <br/>
+     * 1.0.1 < 1.1 <br/>
+     * 1.9 < 1.10 <br/>
      */
     public static boolean versionLessThan(String versionText, String thresholdVersion) {
         if (StringUtils.isBlank(versionText) || StringUtils.isBlank(thresholdVersion)) {

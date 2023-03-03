@@ -1,7 +1,7 @@
 package com.highestpeak.gist.example.base;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2022-07-21
  */
 public class StopWatch {

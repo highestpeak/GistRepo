@@ -1,7 +1,7 @@
 package com.highestpeak.gist.example.guava;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2021-09-01
  */
 public class CacheExample {

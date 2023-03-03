@@ -1,7 +1,7 @@
 package com.highestpeak.gist.example.base;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2022-05-16
  * 记录一些有用的util类
  */
@@ -49,7 +49,7 @@ public class UseFulUtils {
 
 
         // spring 项目基础的能力：
-        // 动态配置（轻量级类似 kconf 几个类就可以完成的）
+        // 动态配置（轻量级类似 hconf 几个类就可以完成的）
         // mybatis orm 框架
         // json objectMapper factory
         // 动态日志框架

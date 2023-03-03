@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.highestpeak.gist.common.RedisTuple;
+
 /**
- * @author zhangjike <zhangjike03@kuaishou.com> <br/>
+ * @author highestpeak <highestpeak@163.com> <br/>
  * Created on 2022-01-18 <br/>
  * redis 的模拟操作类 <br/>
  */
@@ -151,6 +153,8 @@ public interface RedisCommands {
 
     Set<String> zrevrange(String key, long start, long end);
 
+    Set<RedisTuple> zrangeWithScores(String key, long start, long end);
+
     Long zcard(String key);
 
     Double zscore(String key, String member);
@@ -242,5 +246,5 @@ public interface RedisCommands {
     /**
      * Executes BITFIELD Redis command
      */
-    List<Long> bitfield(String key, String...arguments);
+    List<Long> bitfield(String key, String... arguments);
 }

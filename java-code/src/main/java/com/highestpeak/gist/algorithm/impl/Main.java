@@ -10,16 +10,16 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2021-08-17
  * todo
  * http://koala.ink/posts/4ee58d50/
  * https://neil.fraser.name/writing/diff/
  * 另一种场景：我只需要判断是不是新增，如果新增就获取新增内容。如果是修改（删除和更新）就不用获取内容，立刻退出。对方使用全部的内容
  * 这些场景的变更需要对这几个步骤有很好的理解
- *
+ * <p>
  * https://stackoverflow.com/questions/132478/how-to-perform-string-diffs-in-java
- *
+ * <p>
  * https://github.com/google/diff-match-patch
  */
 public class Main {

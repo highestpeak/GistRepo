@@ -1,7 +1,7 @@
 package com.highestpeak.gist.concurrent.util;
 
 /**
- * @author zhangjike <zhangjike03@kuaishou.com>
+ * @author highestpeak <highestpeak@163.com>
  * Created on 2021-10-20
  */
 public class BufferTrigger {
