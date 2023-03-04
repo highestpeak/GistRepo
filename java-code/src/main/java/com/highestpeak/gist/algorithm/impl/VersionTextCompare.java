@@ -1,4 +1,4 @@
-package com.highestpeak.gist.mess.util;
+package com.highestpeak.gist.algorithm.impl;
 
 import java.util.StringTokenizer;
 

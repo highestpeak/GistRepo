@@ -6,6 +6,9 @@ package com.highestpeak.gist.common;
  */
 public class HashUtil {
 
+    /**
+     * 生成字符串的哈希值
+     */
     public static long hashStrToLong(String str) {
         // WARNING: https://stackoverflow.com/questions/2624192/good-hash-function-for-strings
         return str.hashCode();

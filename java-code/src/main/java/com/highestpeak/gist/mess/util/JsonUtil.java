@@ -21,8 +21,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.fasterxml.jackson.module.kotlin.KotlinModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import com.highestpeak.gist.common.JacksonException;
 import com.highestpeak.gist.common.WarmupAble;
+import com.highestpeak.gist.common.help.JacksonException;
 import com.hubspot.jackson.datatype.protobuf.ProtobufModule;
 
 /**

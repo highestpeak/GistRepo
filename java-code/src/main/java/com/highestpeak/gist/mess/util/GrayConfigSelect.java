@@ -1,4 +1,4 @@
-package com.highestpeak.gist.example.base;
+package com.highestpeak.gist.mess.util;
 
 /**
  * @author highestpeak <highestpeak@163.com>

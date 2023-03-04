@@ -7,6 +7,8 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 多线程字符串交替打印
+ *
  * @author highestpeak <highestpeak@163.com>
  * Created on 2022-09-08
  */

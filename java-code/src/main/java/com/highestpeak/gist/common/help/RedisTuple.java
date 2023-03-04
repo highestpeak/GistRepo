@@ -1,4 +1,4 @@
-package com.highestpeak.gist.common;
+package com.highestpeak.gist.common.help;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;

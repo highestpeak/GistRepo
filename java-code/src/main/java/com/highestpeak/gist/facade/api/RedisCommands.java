@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.highestpeak.gist.common.RedisTuple;
+import com.highestpeak.gist.common.help.RedisTuple;
 
 /**
  * @author highestpeak <highestpeak@163.com> <br/>
