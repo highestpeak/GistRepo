@@ -14,6 +14,11 @@ import lombok.Data;
 public class JedisCluster {
 
     /**
+     * WARNING: replace with real client
+     */
+    public static final JedisCluster MOCK_DEFAULT = new JedisCluster();
+
+    /**
      * 执行接口
      */
     @Nonnull

@@ -21,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author highestpeak <highestpeak@163.com>
  * Created on 2023-03-03
  */
+@SuppressWarnings("unused")
 @Slf4j
 @AllArgsConstructor
 public class RedisObjectReadWriter {
