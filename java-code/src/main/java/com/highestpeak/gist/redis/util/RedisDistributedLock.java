@@ -19,6 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * redis 分布式锁. 用于并发量比较小的并行业务控制场景，支持获取多个锁
  * todo WARNING 释放锁的操作采用 get + del 非原子操作 写一个版本使用 redis 的 script 命令来进行锁释放(可能有时候现实情况不允许使用 script 的方式,所以默认使用 get + del 先实现)
+ * todo https://github.com/crossoverJie/distributed-redis-tool
+ * todo https://github.com/yudiandemingzi/spring-boot-distributed-redisson
+ * todo https://github.com/TaXueWWL/redis-distributed-lock
  *
  * @author highestpeak <highestpeak@163.com>
  * Created on 2023-03-04
@@ -52,6 +55,7 @@ public class RedisDistributedLock {
      * @param unit retryInterval 和 lockHoldTimeout 参数的单位
      */
     public RedisDistributedLock(JedisCluster redisClient, int maxRetry, long retryInterval, long lockHoldTimeout, TimeUnit unit) {
+        // todo 需要一个 pre 前缀的参数
         this.redisClient = redisClient;
         this.maxRetry = Math.max(1, maxRetry);
         this.retryIntervalMillis = unit.toMillis(retryInterval);

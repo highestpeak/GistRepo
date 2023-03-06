@@ -24,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
  * 分布式环境下的全局唯一 id 生成器，总长度 64 位，参考 SnowFlake 算法 todo 雪花算法
  * 1[reserved] + 41[timestamp] + 10[machine id] + 12[sequence]
  * 额外增加 id 缓存，处理服务器发生时钟回拨时（NTP同步），从缓存发号
+ * todo https://github.com/hengyunabc/redis-id-generator
+ * todo https://github.com/intenthq/icicle
  *
  * @author highestpeak <highestpeak@163.com>
  * Created on 2023-03-04

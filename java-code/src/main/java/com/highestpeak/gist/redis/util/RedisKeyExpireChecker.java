@@ -60,7 +60,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author highestpeak <highestpeak@163.com>
  * Created on 2023-03-03
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "UnusedReturnValue"})
 @Slf4j
 public class RedisKeyExpireChecker {
 
@@ -235,8 +235,8 @@ public class RedisKeyExpireChecker {
                 if (manualCheck) {
                     return checkIdOptional;
                 } else {
-                    checkIdOptional.ifPresent(docId ->
-                            executor.execute(() -> consumer.accept(docId))
+                    checkIdOptional.ifPresent(checkId ->
+                            executor.execute(() -> consumer.accept(checkId))
                     );
                 }
                 // 移除节点产生并发时，默认循环 100 次

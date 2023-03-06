@@ -11,7 +11,7 @@ import com.highestpeak.gist.common.help.RedisTuple;
  * Created on 2022-01-18 <br/>
  * redis 的模拟操作类 <br/>
  */
-@SuppressWarnings({"SpellCheckingInspection", "unused"})
+@SuppressWarnings({"SpellCheckingInspection", "unused", "UnusedReturnValue"})
 public interface RedisCommands {
     String set(String key, String value);
 
@@ -178,6 +178,18 @@ public interface RedisCommands {
     Set<String> zrangeByScore(String key, String min, String max, int offset, int count);
 
     Set<String> zrevrangeByScore(String key, double max, double min, int offset, int count);
+
+    Set<RedisTuple> zrevrangeByScoreWithScores(String key, double max, double min, int offset, int count);
+
+    Set<RedisTuple> zrevrangeByScoreWithScores(String key, String max, String min, int offset, int count);
+
+    Set<RedisTuple> zrangeByScoreWithScores(String key, double min, double max);
+
+    Set<RedisTuple> zrangeByScoreWithScores(String key, double min, double max, int offset, int count);
+
+    Set<RedisTuple> zrangeByScoreWithScores(String key, String min, String max);
+
+    Set<RedisTuple> zrangeByScoreWithScores(String key, String min, String max, int offset, int count);
 
     Long zremrangeByRank(String key, long start, long end);
 
