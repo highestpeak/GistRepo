@@ -24,7 +24,7 @@ import com.highestpeak.gist.redis.util.cache.objects.StringObject;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 实体 Redis 缓存组件
+ * 实体/对象类型 Redis 缓存组件
  *
  * @author highestpeak <highestpeak@163.com>
  * Created on 2023-03-05
@@ -34,10 +34,10 @@ import lombok.extern.slf4j.Slf4j;
 public class EntityCache<T extends StringObject> extends BaseRedisCache<T> {
 
     /**
-     * 按照前缀限制 predicate 回表的 qps
-     * 1. cache 中查询不存在一定回表
-     * 2. 如果没有配置限流，predicate 为 false 也可以回表
-     * 3. 如果配置了限流，cache 不存在的部分会消耗回表的 qps，predicate=false 也消耗回表 qps， 回表 qps 不足时，不能回表
+     * 按照前缀限制 predicate 回表的 qps <br/>
+     * 1. cache 中查询不存在一定回表 <br/>
+     * 2. 如果没有配置限流，predicate 为 false 也可以回表 <br/>
+     * 3. 如果配置了限流，cache 不存在的部分会消耗回表的 qps，predicate=false 也消耗回表 qps， 回表 qps 不足时，不能回表 <br/>
      */
     private static final Hconf<Map<String, RateLimiter>> PREFIX_CACHE_LOAD_PER_SECOND = Hconfs.ofDoubleMap(
             "highestpeak.prefix_cache_load_per_second", Collections.emptyMap())
