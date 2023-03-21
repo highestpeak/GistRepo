@@ -106,6 +106,7 @@ public class RedisKeyExpireChecker {
     private final Consumer<String> consumer;
     private final int readLoopCount;
     private final boolean enableAutoRetry;
+    @Getter
     private final Duration autoRetryDuration;
 
     /**
@@ -126,7 +127,7 @@ public class RedisKeyExpireChecker {
      */
     private final AtomicInteger shardOffset = new AtomicInteger(0);
 
-    private RedisKeyExpireChecker(Builder builder) {
+    protected RedisKeyExpireChecker(Builder builder) {
         this.uniqName = builder.uniqName;
         this.shard = builder.shard <= 0 ? 12 : builder.shard;
         this.redisCluster = builder.redisCluster;
@@ -188,17 +189,22 @@ public class RedisKeyExpireChecker {
             }
 
             RedisTuple firstData = targetList.iterator().next();
-            long firstEleExpireWait = firstData.getScore().longValue() - System.currentTimeMillis();
-            if (firstEleExpireWait > 0) {
-                log.debug("uniqName: {}, checkExpire first checkId: {} not time to process", uniqName, firstData.getElement());
+            String checkId = firstData.getElement();
+            if (!checkIfFirstDataOk(firstData)) {
+                log.debug("uniqName: {}, checkExpire first checkId: {} not time to process", uniqName, checkId);
                 continue;
             }
-
-            String checkId = firstData.getElement();
-            return new FirstData(sortSetName, checkId);
+            return new FirstData(sortSetName, checkId, firstData.getScore());
         }
         return null;
     }
+
+    protected boolean checkIfFirstDataOk(RedisTuple firstData) {
+        // 执行时机: firstData.score <= 当前时间
+        long firstEleExpireWait = firstData.getScore().longValue();
+        return firstEleExpireWait <= System.currentTimeMillis();
+    }
+
 
     private int getShardAndNext() {
         do {
@@ -253,7 +259,7 @@ public class RedisKeyExpireChecker {
             String flag = getRedisClient().set(checkIdLockPre + checkId, "1", "NX", "EX", 3);
             // 一段时间后会自动重试，业务执行成功后，需要手动调用 RedisKeyExpireChecker#deleteKey，否则一直重试
             if ("OK".equals(flag)) {
-                getRedisClient().zadd(firstData.getSortSetName(), System.currentTimeMillis() + autoRetryDuration.toMillis(), checkId);
+                getRedisClient().zadd(firstData.getSortSetName(), autoRetrySource(firstData), checkId);
                 log.info("uniqName: {}, checkExpire process checkId: {}, autoRetry after: {}", uniqName, checkId, autoRetryDuration.toMillis());
                 return Optional.of(checkId);
             } else {
@@ -272,6 +278,10 @@ public class RedisKeyExpireChecker {
             }
         }
         return Optional.empty();
+    }
+
+    protected double autoRetrySource(FirstData firstData) {
+        return System.currentTimeMillis() + autoRetryDuration.toMillis();
     }
 
     private RedisCommands getRedisClient() {
@@ -306,7 +316,6 @@ public class RedisKeyExpireChecker {
         // 如果延迟时间是负数不影响，统一处理逻辑
         int shareId = hashShardId(checkId);
         String sortSetName = getSortSetName(shareId);
-        // todo 现在是分数是到期时间，写一个实现是分数是写入时间，然后到期后按照需要，从 Hconf 读出配置的过期时间长度，然后从队列消费需要消费的数据
         long execTs = System.currentTimeMillis() + duration.toMillis();
         getRedisClient().zadd(sortSetName, execTs, checkId);
     }
@@ -468,9 +477,10 @@ public class RedisKeyExpireChecker {
      */
     @AllArgsConstructor
     @Getter
-    private static class FirstData {
+    protected static class FirstData {
         private final String sortSetName;
         private final String checkId;
+        private final double score;
     }
 
 }
