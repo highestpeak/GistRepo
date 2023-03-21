@@ -13,7 +13,7 @@ import com.google.protobuf.GeneratedMessageV3;
  */
 @SuppressWarnings("unused")
 public class Hconfs {
-
+    // todo 至少需要一个 db 的默认实现，然后需要一个基于配置中心 web 应用的默认实现
     private static final IHconfFactory FACTORY;
 
     static {
