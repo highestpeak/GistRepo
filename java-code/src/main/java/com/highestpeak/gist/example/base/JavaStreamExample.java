@@ -56,6 +56,11 @@ public class JavaStreamExample {
     // java stream map ignore exception
     // https://stackoverflow.com/questions/19757300/java-8-lambda-streams-filter-by-method-with-exception
 
+    // 集合类的 stream、map、reduce 、collect
+
+    // https://stackoverflow.com/questions/42177054/every-combination-of-2-strings-in-list-java-8
+    // https://stackoverflow.com/questions/23620360/how-to-map-to-multiple-elements-with-java-8-streams
+
     public static void main(String[] args) {
         // 将一个 object's list 中两个 field map 到一个 list
 

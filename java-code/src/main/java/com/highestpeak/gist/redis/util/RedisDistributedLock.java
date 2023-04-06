@@ -22,6 +22,8 @@ import lombok.extern.slf4j.Slf4j;
  * todo https://github.com/crossoverJie/distributed-redis-tool
  * todo https://github.com/yudiandemingzi/spring-boot-distributed-redisson
  * todo https://github.com/TaXueWWL/redis-distributed-lock
+ * <p>
+ * https://redis.io/docs/manual/patterns/distributed-locks/
  *
  * @author highestpeak <highestpeak@163.com>
  * Created on 2023-03-04
@@ -76,6 +78,7 @@ public class RedisDistributedLock {
             LockResponse lockResponse = lock(lockKeys, lockValue, lockHoldTimeoutMillis);
             if (lockResponse.isLocked()) {
                 try {
+                    // todo 加锁前可以判断下是否已经满足了条件。数据已经 ok 了，进而不需要加锁。否则可能会出现 100 个任务，每个任务等待 1s，最终100s的情况
                     if (task.distinctMills() > 0 && needFilter(lockKeys, task.distinctMills())) {
                         log.info("needFiler keys: {}", lockKeys);
                         return null;
